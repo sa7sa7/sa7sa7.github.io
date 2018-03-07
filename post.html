@@ -90,8 +90,122 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
                  <h2 class="section-heading">Introduction </h2>
+                    <img class="img-responsive" src="img/img.png" alt="">
+                    <p>Les évènements sont partout : dans nos applications, voitures, appareils, serveurs, et même dans nos cerveaux.</br>
+                    De nos jours, on a de plus en plus d’objets connectés.</br>
+                    Le défis du jour est d’analyser cette quantité énorme d’évènements : un problème fortement lié au Big Data.</p>
+                 <h2 class="section-heading">Définition du concept</h2>
 
-                  
+                 <p>Selon la définition fournie par EPTS (Event Process Technical Society) dans son glossaire publié fin 2008, Complexe Event Processing, (en français, traitement des événements complexes), est tout calcul/traitement exécutant des opérations sur des événements</p>
+                 <a href="#">
+                     <img class="img-responsive" src="img/Cycle1.jpg" alt="">
+                 </a>
+                 <p>Deux dérivés conceptuels se distinguent:</p>
+                    <ul>
+                        <li><b>ESP (Event Stream Processing): </b>traite des streams d’événements ordonnés dans le temps</li>
+                        <li><b>CEP (Complex Event Processing): </b>réfère à un processus de traitement d’événements qui assume avoir un Event Cloud comme input, par conséquent, il n’y a aucune supposition quant à l’ordre d’arrivée des messages.</li>
+                    </ul>
+                <a href="#">
+                        <img class="img-responsive" src="img/Vocab_CEP_V0.51.png" alt="">
+                </a>
+                <p>On note la différence entre deux termes interéssants:</p>
+                <ul>
+                    <li>Complex event (un événement complexe): un événement traduisant une abstraction d’autres événements. Exemple: une transaction en ligne est une abstraction de plusieurs événements (dépôt de l’article dans le panier, saisie d’un code réduction, saisie du n° de la carte bancaire, etc.)</li>
+                    <li>Composite event (un événement composé): un événement construit par combinaison de plusieurs événements utilisant des constructeurs d’événements particuliers, comme une conjonction, disjonction, etc.</li>
+                </ul>
+                <p>La plupart des solutions CEP et concepts peuvent être classés en deux catégories principales :</p>
+                <ul>
+                    <li>Calcul orienté CEP: Axée sur l'exécution d'algorithmes en ligne en réponse à des événements entrant dans le système. Un exemple simple consiste à calculer en permanence une moyenne basée dans les données contenues dans les événements entrants.</li>
+                    <li>détection orientée CEP: Axée sur la détection des combinaisons de modèles d'événements appelés situations. Un exemple simple consiste à détecter une situation par la reconnaissance d'une séquence spécifique d'événements.</li>
+                </ul>
+                <h2 class="section-heading">C'est quoi un évènement? (déjà!!) </h2>
+                    <p>Il existe trois différents sens du mot "Event" qui sont utilisés:</p>
+                    <ul>
+                        <li>Event: signifie tout ce qui se passe, ou un changement d'état.
+                            Il existe des différences intéressantes entre les événements et les changements d'état.un événement peut être réel ou imaginaire, passé ou futur.
+                            Les films et les rêves ont des événements imaginaires.</br>
+                            On note une différence entre communiquer des événements futurs(prédire un défaut dans une machine) et analyser des évènements passé(des températures pour un système, historique d'opérations...)
+                        </li>
+                        <li>Event: Abréviation d'un "Event Object". En informatique, un objet événement est généralement une donnée - une chaîne de bits, peut-être sous la forme d'un message JSON ou XML.
+                                Le contenu d'un objet événement est déterminé par la personne qui a conçu le système. Il contient souvent un "time stamp" pour indiquer quand est ce que l'évènement a été généré, reçu, lu...
+                        </li>
+                        <li>Event: signifie une "notification", un "signal" qui résulte d'un évènement qui se produit. C'est la communication d'un composant (émetteur ou producteur) vers un autre composant (récepteur ou consommateur).</br>
+                            En programmation, une notification est mise en œuvre en tant que transfert de données, transfert de contrôle ou les deux.</li>
+                    </ul>
+                <h2 class="section-heading">Un exemple en traitant l'évènement en tant que "Event Object" </h2>
+                    <a href="#">
+                            <img class="img-responsive" src="img/data.png" alt="">
+                    </a>
+                    Ce qui est connu: Stocker des donnée dans des tables, Concevoir un base de donnée relationnelle. Les colonnes représentent des propriétés de l'entité. Les lignes représentent une instance ou un exemple.</br>
+                    On peut capturer la situation courante de l'application: on met à jour les attributs. De plus, les données sont <b>normalisés : pas de duplication</b>.</br>
+                    <b>Problème:</b> Faut faire des jointures, requêter beaucoups de tables pour déduire des conclusions.
+                    <a href="#">
+                            <img class="img-responsive" src="img/event.png" alt="">
+                    </a>
+                    Ci-dessus un exemple d'un évènement de "Death" dans un jeu.</br>
+                    Les avantages d'une telle représentation:
+                    <ul>
+                        <li>Une structure riche</li>
+                        <li>Data pas normalizée</li>
+                        <li>Pas de chemas précis pour la Data</li>
+                    </ul>
+                    <a href="#">
+                            <img class="img-responsive" src="img/streamEvent.png" alt="">
+                    </a>
+                    <a href="#">
+                            <img class="img-responsive" src="img/raw_aggregated.png" alt=s"">
+                    </a>
+                <h2 class="section-heading">Un exemple en traitant l'évènement en tant que "Event notification", "Signal" </h2>
+                    <a href="#">
+                            <img class="img-responsive" src="img/Flink.jpg" alt="">
+                    </a>
+                    <a href="#">
+                            <img class="img-responsive" src="img/code_1.PNG" alt="">
+                    </a>
+                    <object type="image/svg+xml" data="img/Flink_advantages.svg" class="img-responsive">
+                        Your browser does not support SVG
+                      </object>
+                    <p>Cet exemple suppose qu'on a déjà notre flux d'évènements ordonné dans le temps. Pour l'obtenir, on utilise un des Frameworks qui existent: Kafka, SparkStream... </p>
+                    <p><b>Illustration avec Apache Kafka</b></p>
+                    <ul>
+                        <li>Kafka est un système de messagerie de type publication/abonnement conçu pour remplacer les courtiers de message traditionnels.</br>
+                            Initialement créé et développé par LinkedIn, puis passé en open source en 2011, Kafka est actuellement développé par la Apache Software Foundation. Il vise à exploiter les nouvelles infrastructures de données rendues possibles par les clusters massivement parallèles.</li>
+                    </ul>
+                    <a href="#">
+                            <img class="img-responsive" src="img/kafka.png" alt="">
+                    </a>
+                    <a href="#">
+                            <img class="img-responsive" src="img/kafka_2.png" alt="">
+                    </a>
+                <h2 class="section-heading">Un exemple avec une architecture Cloud by Google </h2>
+                    <object type="image/svg+xml" data="img/architecture.svg" class="img-responsive">
+                        Your browser does not support SVG
+                      </object>
+                    <!--<embed type="image/svg+xml" src="img/architecture.svg" />-->
+                    <ul>
+                        <li>ClickStreams, UserActions: Interactions avec des applications dans Cloud ou On-promises:</br>
+                                • Ajouter des articles à un panier ou à une liste de souhaits</br>
+                                • Les transactions financières
+                        </li>
+                        <li>Google Cloud Pub / Sub: couche de messagerie, service de transport de messages.</li>
+                        <li>Google Cloud Dataflow: transforme, enrichit, agrège ou applique des données générales à partir de sources hétérogènes multiples et les formate en une seule représentation cohérente.</li>
+                        <li>Stockage d'événements: dans le service de base de données NoSQL</li>
+                        <li>Exécution des règles</li>
+                        <li>Actions sortantes: notifications pour les appareils mobiles, notifications pour d'autres applications ou envoi d'e-mails aux utilisateurs.</li>
+                        <li>Stocker les résultats de l'exécution des règles</li>
+                    </ul>
+                <h2 class="section-heading">CEP DataFlow</h2>
+                    <a href="#">
+                            <img class="img-responsive" src="img/DataFlow.png" alt="">
+                    </a>
+                    <p>CEP peut lire les données du flux et obtient ses règles à partir du Workbench Drools. Du point de vue de architectural, le Drools Workbench et le CEP Engine sont une unité, un microservice unique.</p>
+                <h2 class="section-heading">Large Domaine d'applications</h2>
+                <ul>
+                    <li>Supply chain visibility products</li>
+                    <li>Traçabilité par le biais de puces RFID: Fiabilisation de la traçabilité d’objets dans une chaîne logistique par exemple.</li>
+                    <li>Problématiques financières et boursières: Détection de Fraudes</li>
+                    <li>Business Activity Monitoring (BAM)</li>
+                </ul>
                 </div>
             </div>
         </div>
